@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url(/webfonts/DMSans-Regular.ttf);
+}
+
+@theme {
+  --color-background: #08090c;
+  --color-surface: #101217;
+  --color-surface-light: #171a21;
+
+  --color-primary: #b5f36d;
+  --color-primary-dark: #8bc64a;
+  --color-primary-muted: #b5f36d2b;
+  --color-primary-dark-muted: #8bc64a2b;
+
+  --color-text: #f3f4f6;
+  --color-muted: #888d99;
+  --color-border: rgba(255, 255, 255, 0.09);
+
+  --font-body: "DM Sans", sans-serif;
+
+  --text-xs: clamp(0.7rem, 0.66rem + 0.15vw, 0.8rem);
+  --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+  --text-4xl: clamp(2.5rem, 2rem + 3vw, 3.5rem);
+  --text-hero: clamp(2.8rem, 1.8rem + 5vw, 5rem);
+}
+
+/* =================================
+   RESET
+================================= */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  section {
+    background-color: var(--color-background);
+  }
+
+  section:nth-child(even) {
+    background-color: var(--color-surface);
+    border-block: solid 1px var(--color-border);
+  }
+
+  h1,
+  h2 {
+    line-height: 1.04;
+    letter-spacing: -1px;
+    font-weight: 900;
+  }
+
+  button,
+  a {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}
