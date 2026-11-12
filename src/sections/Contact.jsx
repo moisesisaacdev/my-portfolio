@@ -97,7 +97,7 @@ export default function Contact() {
               />
               <Input
                 placeholder="E-mail"
-                {...register('emaii')}
+                {...register('email')}
               />
             </div>
             <div>
