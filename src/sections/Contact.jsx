@@ -5,7 +5,7 @@ import Button from "../components/Button.jsx";
 import Section from "../components/Section.jsx";
 import SectionTop from "../components/SectionTop.jsx";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { scrollReveal } from "../animation/scrollReveal.js";
 import { contact } from "../data/contact.js";
 import { sendMessage } from "../services/email.js";
@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 
 export default function Contact() {
   const sectionRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useLayoutEffect(() => {
     return scrollReveal(
@@ -84,8 +85,18 @@ export default function Contact() {
           </div>
           <form
             className="space-y-2"
-            onSubmit={handleSubmit(data => {
-              sendMessage(data);
+            onSubmit={handleSubmit(async data => {
+              try {
+                setLoading(true);
+
+                await sendMessage(data);
+
+                alert('Obrigado  por entrar em contacto.');
+              } catch {
+                alert('Falha ao enviar mensagem.');
+              } finally {
+                setLoading(false);
+              }
             })}
           >
             <div className={`
@@ -107,8 +118,10 @@ export default function Contact() {
               />
             </div>
             <div className="grid">
-              <Button>
-                Enviar mensagem
+              <Button
+                disabled={loading}
+              >
+                {loading ? 'A enviar...' : 'Enviar mensagem'}
               </Button>
             </div>
           </form>

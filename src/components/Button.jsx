@@ -12,6 +12,7 @@ export default function Button(
         font-semibold
         transition-all
         duration-500
+        disabled:opacity-60
         ${outline ? `
           border-border
           text-muted
