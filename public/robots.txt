@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://moisesdev.onrender.com/sitemap.xml
+Sitemap: https://moisesdev-fp78.onrender.com/sitemap.xml
