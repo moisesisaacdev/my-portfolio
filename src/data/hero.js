@@ -19,7 +19,7 @@ export const hero = {
     },
     {
       label: 'Um pouco sobre mim',
-      href: '#services',
+      href: '#home',
       outline: true,
       icon: LuPlay
     },
