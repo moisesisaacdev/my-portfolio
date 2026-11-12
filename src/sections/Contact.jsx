@@ -24,7 +24,8 @@ export default function Contact() {
 
   const {
     register,
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm();
 
   return (
@@ -91,6 +92,8 @@ export default function Contact() {
 
                 await sendMessage(data);
 
+                reset()
+                
                 alert('Obrigado  por entrar em contacto.');
               } catch {
                 alert('Falha ao enviar mensagem.');
