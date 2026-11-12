@@ -8,7 +8,9 @@ import SectionTop from "../components/SectionTop.jsx";
 import { useLayoutEffect, useRef } from "react";
 import { scrollReveal } from "../animation/scrollReveal.js";
 import { contact } from "../data/contact.js";
+import { sendMessage } from "../services/email.js";
 import { LuArrowUpRight } from "react-icons/lu";
+import { useForm } from "react-hook-form";
 
 export default function Contact() {
   const sectionRef = useRef(null);
@@ -18,6 +20,11 @@ export default function Contact() {
       sectionRef.current
     );
   }, []);
+
+  const {
+    register,
+    handleSubmit
+  } = useForm();
 
   return (
     <Section
@@ -77,19 +84,25 @@ export default function Contact() {
           </div>
           <form
             className="space-y-2"
+            onSubmit={handleSubmit(data => {
+              sendMessage(data);
+            })}
           >
             <div className={`
               grid grid-cols-2 gap-2
             `}>
-              <Input 
+              <Input
                 placeholder="Nome"
+                {...register('name')}
               />
-              <Input 
+              <Input
                 placeholder="E-mail"
+                {...register('emaii')}
               />
             </div>
             <div>
-              <Textarea 
+              <Textarea
+                {...register('message')}
                 placeholder="Digite a sua mensagem..."
               />
             </div>
