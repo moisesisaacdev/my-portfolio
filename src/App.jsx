@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./sections/Hero.jsx";
-import Highlights from "./sections/HighLights.jsx";
+import Highlights from "./sections/Highlights.jsx";
 import About from "./sections/About.jsx";
 import Services from "./sections/Services.jsx";
 import Skills from "./sections/Skills.jsx";
